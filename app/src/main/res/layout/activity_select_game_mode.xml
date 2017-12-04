@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/linearSelectGameMain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@color/colorGray"
+
+    tools:context="br.com.douglimar.surpresinha.SelectGameModeActivity">
+
+    <TextView
+        android:id="@+id/tvSelectGameTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorWhite"
+        android:text="XXX"
+        android:textSize="26sp"
+        android:padding="5dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/linearSingleSelectGame"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorWhite"
+        android:elevation="2dp"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/imgSingleGameThumb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:clickable="false"
+            android:src="@drawable/duplasena_ico"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSingleGameName"
+                android:text="@string/gerarJogoUnico"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:textIsSelectable="false"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearMultiSelectGame"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorWhite"
+        android:elevation="2dp"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/imgMultiGameThumb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:clickable="false"
+            android:src="@drawable/duplasena_ico"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMultiGameName"
+                android:text="@string/gerarMultiplosJogos"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:textIsSelectable="false"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewSelect"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_TESTE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

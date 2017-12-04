@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:id="@+id/linearSelectGame"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.douglimar.surpresinha.SelectGameActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="4dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/tvSelectGameTitle2"
+        />
+
+    <Button
+        android:id="@+id/btnSingleGame"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:textSize="18sp"
+        android:layout_margin="4dp"
+        android:background="@color/colorWhite"
+        android:text="@string/gerarJogoUnico" />
+
+    <Button
+        android:id="@+id/btnMultipleGames"
+        android:layout_width="match_parent"
+        android:layout_margin="4dp"
+        android:textSize="18sp"
+        android:layout_height="75dp"
+        android:background="@color/colorWhite"
+        android:text="@string/gerarMultiplosJogos" />
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewSelect2"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_TESTE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

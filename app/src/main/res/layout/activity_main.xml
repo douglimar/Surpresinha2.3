@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="br.com.douglimar.surpresinha.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearMegaSena"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorMegasena"
+        android:elevation="2dp"
+        android:layout_margin="2dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:clickable="false"
+            android:src="@drawable/megasena_ico"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMegaSena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:clickable="false"
+                android:textIsSelectable="false"
+                android:textStyle="bold"
+                android:text="@string/megasena"/>
+            <TextView
+                android:id="@+id/tvMegasenaDescr"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="false"
+                android:clickable="false"
+                android:textSize="14sp"
+                android:text="@string/megasena_descr"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearQuina"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorQuina"
+        android:elevation="2dp"
+        android:layout_margin="2dp"
+        android:paddingTop="2dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:clickable="false"
+            android:src="@drawable/quina_ico"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvQuina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:clickable="false"
+                android:textIsSelectable="false"
+                android:textStyle="bold"
+                android:text="@string/quina"/>
+            <TextView
+                android:id="@+id/tvQuinaDescr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textIsSelectable="false"
+                android:clickable="false"
+                android:textSize="14sp"
+                android:text="@string/quina_descr"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLotofacil"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorLotofacil"
+        android:elevation="2dp"
+        android:layout_margin="2dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:clickable="false"
+            android:src="@drawable/lotofacil_ico"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvLotofacil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:clickable="false"
+                android:textIsSelectable="false"
+                android:textStyle="bold"
+                android:text="@string/lotofacil"/>
+            <TextView
+                android:id="@+id/tvLotofacilDescr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="false"
+                android:textColor="@color/colorWhite"
+                android:clickable="false"
+                android:textSize="14sp"
+                android:text="@string/lotofacil_descr"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLotomania"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorLotomania"
+        android:elevation="2dp"
+        android:layout_margin="2dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:clickable="false"
+            android:src="@drawable/lotomania_ico"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvLotomania"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:clickable="false"
+                android:textIsSelectable="false"
+                android:textStyle="bold"
+                android:text="@string/lotomania"/>
+
+            <TextView
+                android:text="@string/lotomania_descr"                android:id="@+id/tvLotomaniaDescr"
+                android:textSize="14sp"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="false"
+                android:clickable="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearDuplaSena"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorDuplasena"
+        android:elevation="2dp"
+        android:layout_margin="2dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:clickable="false"
+            android:src="@drawable/duplasena_ico"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDuplaSena"
+                android:text="@string/duplasena"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:textIsSelectable="false"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvDuplaSenaDescr"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="false"
+                android:clickable="false"
+                android:textSize="14sp"
+                android:text="@string/duplasena_descr"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewMain"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_TESTE"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>
