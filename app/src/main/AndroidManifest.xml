@@ -37,7 +37,8 @@
             android:label="@string/title_activity_result"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ConfiguradorActivity" />
-        <activity android:name=".SelectGameActivity"></activity>
+        <activity android:name=".SelectGameActivity" />
+        <activity android:name=".Main2Activity"></activity>
     </application>
 
 </manifest>
