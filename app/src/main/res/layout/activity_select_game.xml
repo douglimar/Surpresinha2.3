@@ -27,16 +27,20 @@
         android:id="@+id/btnSingleGame"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:textSize="18sp"
-        android:layout_margin="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:background="@color/colorWhite"
         android:text="@string/gerarJogoUnico" />
 
     <Button
         android:id="@+id/btnMultipleGames"
         android:layout_width="match_parent"
-        android:layout_margin="4dp"
-        android:textSize="18sp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:layout_height="75dp"
         android:background="@color/colorWhite"
         android:text="@string/gerarMultiplosJogos" />

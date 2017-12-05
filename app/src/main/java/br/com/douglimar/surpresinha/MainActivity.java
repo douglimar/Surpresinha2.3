@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         Toast.makeText(this, pMessage, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, SelectGameActivity.class);
+        Intent intent = new Intent(this, Main2Activity.class);
         intent.putExtra(EXTRA_MESSAGE, pMessage);
 
         startActivity(intent);

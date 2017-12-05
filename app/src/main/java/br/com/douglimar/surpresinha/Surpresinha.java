@@ -193,11 +193,13 @@ public class Surpresinha {
         for (int i = 0; i < 50; i++) {
             j++;
 
-
-            if (numsLotomania[i] < 10)
-                Retorno = Retorno + " 0" + numsLotomania[i];
+            if (numsLotomania[i]==100)
+                Retorno = Retorno + " 00";
             else
-                Retorno = Retorno + " " + numsLotomania[i];
+                if (numsLotomania[i] < 10)
+                    Retorno = Retorno + " 0" + numsLotomania[i];
+                else
+                    Retorno = Retorno + " " + numsLotomania[i];
 
             if (j == 8 )  {
                 Retorno = Retorno + '\n';

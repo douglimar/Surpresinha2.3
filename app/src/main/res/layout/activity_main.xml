@@ -196,7 +196,8 @@
                 android:text="@string/lotomania"/>
 
             <TextView
-                android:text="@string/lotomania_descr"                android:id="@+id/tvLotomaniaDescr"
+                android:text="@string/lotomania_descr"
+                android:id="@+id/tvLotomaniaDescr"
                 android:textSize="14sp"
                 android:textColor="@color/colorWhite"
                 android:layout_width="wrap_content"
