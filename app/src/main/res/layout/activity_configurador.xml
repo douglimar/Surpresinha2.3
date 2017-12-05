@@ -1,63 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="br.com.douglimar.surpresinha.ConfiguradorActivity">
+    android:background="#009900"
+    android:id="@+id/linearConfigurador"
+    tools:context="br.com.douglimar.surpresinha.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#64000000"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:id="@+id/tvConfiguratorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:text="MEGA-SENA"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical|center_horizontal"/>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:text="Quantos jogos você deseja gerar?" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/tvNumbersPerGame"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Selecione a quantidade de números por jogo" />
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorWhite"
+        android:layout_margin="4dp"
+        android:text="Utilize os botões abaixo para informar quantos jogos você quer gerar aleatóriamente (de 2 a 10 jogos)" />
 
-
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:gravity="center_horizontal" />
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="25dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="33dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnMinus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:background="#ffffffff"
+                android:text="-"
+                android:textColor="#ca1518"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/tvNumero"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:text="text"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="#2e7294"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnPlus"
+                android:textSize="25sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignBaseline="@+id/btnMinus"
+                android:layout_alignBottom="@+id/btnMinus"
+                android:textColor="#13ab52"
+                android:background="#ffffff"
+                android:layout_weight="1"
+                android:text="+" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnGenerateMultipleBets"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/colorPrimaryLight"
-        android:layout_margin="4dp"
-        android:text="Gerar Apostas" />
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="GERAR NÚMEROS" />
 
 </LinearLayout>

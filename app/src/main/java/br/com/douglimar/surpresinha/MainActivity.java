@@ -1,17 +1,11 @@
 package br.com.douglimar.surpresinha;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -20,70 +14,85 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
 
+
     public static final String EXTRA_MESSAGE = new String ("br.com.douglimar.surpresinha.MESSAGE");
+    public static final String EXTRA_MESSAGE2 = new String ("br.com.douglimar.surpresinha.MESSAGE2");
+
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        LinearLayout linearMegaSena  = findViewById(R.id.linearMegaSena);
-        LinearLayout linearQuina     = findViewById(R.id.linearQuina);
-        LinearLayout linearLotofacil = findViewById(R.id.linearLotofacil);
-        LinearLayout linearLotomania = findViewById(R.id.linearLotomania);
-        LinearLayout linearDuplasena = findViewById(R.id.linearDuplaSena);
+        AdView adView = findViewById(R.id.adViewMain2);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
-        linearMegaSena.setOnClickListener(new View.OnClickListener() {
+        Button btnMega = findViewById(R.id.btnMegasena);
+        Button btnLotofacil = findViewById(R.id.btnLotofacil);
+        Button btnLotomania = findViewById(R.id.btnLotomania);
+        Button btnQuina = findViewById(R.id.btnQuina);
+        Button btnDuplaSena = findViewById(R.id.btnDuplaSena);
+
+        btnMega.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 openActivity("MEGA-SENA");
             }
         });
 
-        linearQuina.setOnClickListener(new View.OnClickListener() {
+        btnLotofacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                openActivity("QUINA");
-            }
-        });
-
-        linearLotofacil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
                 openActivity("LOTOFÁCIL");
             }
         });
 
-        linearLotomania.setOnClickListener(new View.OnClickListener() {
+        btnLotomania.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                openActivity("LOTOMANIA");
 
-                openActivity2("LOTOMANIA");
+            }
+
+        });
+
+        btnQuina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity("QUINA");
             }
         });
 
-        linearDuplasena.setOnClickListener(new View.OnClickListener() {
+
+        btnDuplaSena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                openActivity2("DUPLA-SENA");
+                openActivity("DUPLA-SENA");
             }
         });
 
-        // Create a AdView
-        // Load Advertisement Banner
-        AdView mAdView = findViewById(R.id.adViewMain);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void openActivity(String pMessage) {
@@ -95,11 +104,10 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         Toast.makeText(this, pMessage, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, SelectGameModeActivity.class);
+        Intent intent = new Intent(this, SelectGameActivity.class);
         intent.putExtra(EXTRA_MESSAGE, pMessage);
 
         startActivity(intent);
-
 
     }
 
@@ -114,12 +122,11 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         Toast.makeText(this, pMessage, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, Main2Activity.class);
+        Intent intent = new Intent(this, SelectGameActivity.class);
         intent.putExtra(EXTRA_MESSAGE, pMessage);
 
         startActivity(intent);
 
 
     }
-
 }

@@ -42,12 +42,18 @@ public class SelectGameActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-
         btnJogoUnico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                openActivity(surpresinha, message);
+                Intent intent2 = new Intent(getBaseContext(), ResultActivity.class);
+
+                intent2.putExtra(MainActivity.EXTRA_MESSAGE, message);
+                intent2.putExtra(MainActivity.EXTRA_MESSAGE2, openActivity2(surpresinha,message));
+
+                startActivity(intent2);
+
+                //openActivity2(surpresinha, message);
 
             }
         });
@@ -57,6 +63,8 @@ public class SelectGameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent1 = new Intent(getApplicationContext(), ConfiguradorActivity.class);
+
+                intent1.putExtra(MainActivity.EXTRA_MESSAGE, message);
 
                 startActivity(intent1);
 
@@ -118,39 +126,89 @@ public class SelectGameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openActivity(Surpresinha pSurpresinha, String pMessage) {
+    private String generateMultipleBets(Surpresinha pSurpresinha, String pMessage, int iQtd) {
+
+        String retorno = "";
+
+        for(int i = 0; i == iQtd; i++) {
+
+            switch (pMessage) {
+                case "MEGA-SENA": {
+
+                    retorno = retorno + "\n\n" + pSurpresinha.generateMegasenaGame();
+
+                    break;
+                }
+                case "QUINA": {
+                    retorno = pSurpresinha.generateQuinaGame();
+
+                    break;
+                }
+                case "LOTOFÁCIL": {
+
+                    retorno = retorno + "\n\n" + pSurpresinha.generateLotofacilGame();
+
+                    break;
+                }
+                case "LOTOMANIA": {
+
+                    retorno = retorno + "\n\n" + pSurpresinha.generateLotomaniaGame();
+                    break;
+                }
+                case "DUPLA-SENA": {
+
+                    retorno = retorno + "\n\n" + pSurpresinha.generateDuplaSenaGame();
+
+                    break;
+                }
+            }
+        }
+
+
+
+        return  retorno;
+
+    }
+
+    private String openActivity2(Surpresinha pSurpresinha, String pMessage) {
+
+        String retorno = "";
 
         switch (pMessage) {
             case "MEGA-SENA": {
 
-                Toast.makeText(this,pSurpresinha.generateMegasenaGame(), Toast.LENGTH_SHORT).show();
+                retorno = pSurpresinha.generateMegasenaGame();
 
                 break;
             }
             case "QUINA": {
-                Toast.makeText(this,pSurpresinha.generateQuinaGame(), Toast.LENGTH_SHORT).show();
+                retorno = pSurpresinha.generateQuinaGame();
 
                 break;
             }
             case "LOTOFÁCIL": {
-                Toast.makeText(this,pSurpresinha.generateLotofacilGame(), Toast.LENGTH_SHORT).show();
+
+                retorno = pSurpresinha.generateLotofacilGame();
 
                 break;
             }
             case "LOTOMANIA": {
 
-                Toast.makeText(this,pSurpresinha.generateLotomaniaGame(), Toast.LENGTH_SHORT).show();
+                retorno = pSurpresinha.generateLotomaniaGame();
                 break;
             }
             case "DUPLA-SENA": {
 
-                Toast.makeText(this,pSurpresinha.generateDuplaSenaGame(), Toast.LENGTH_SHORT).show();
+                retorno = pSurpresinha.generateDuplaSenaGame();
 
                 break;
             }
 
         }
 
+        return  retorno;
+
     }
+
 
 }

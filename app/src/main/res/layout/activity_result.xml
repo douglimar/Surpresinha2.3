@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:id="@+id/linearResult"
     tools:context="br.com.douglimar.surpresinha.ResultActivity">
 
     <android.support.design.widget.AppBarLayout
