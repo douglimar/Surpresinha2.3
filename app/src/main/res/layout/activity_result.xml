@@ -35,7 +35,9 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_result" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_result" />
 
 
     <android.support.design.widget.FloatingActionButton
@@ -44,24 +46,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@android:color/holo_blue_dark"
-        app:layout_anchor="@id/app_bar"
+        app:layout_anchor="@id/linearResult2"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_menu_search" />
-
+        app:srcCompat="@android:drawable/ic_popup_sync" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:backgroundTint="@android:color/holo_orange_dark"
-        app:layout_anchor="@id/linearResult2"
+        app:layout_anchor="@+id/fab"
         app:layout_anchorGravity="top|end"
         app:srcCompat="@android:drawable/ic_menu_share" />
-
-
-
-
 
     <LinearLayout
         android:id="@+id/linearResult2"
@@ -71,15 +73,11 @@
         android:gravity="bottom"
         android:orientation="horizontal">
 
-
-
-
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
-
 
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -1,6 +1,7 @@
 package br.com.douglimar.surpresinha;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -115,9 +116,9 @@ public class ConfiguradorActivity extends AppCompatActivity {
                 Surpresinha surpresinha = new Surpresinha();
 
                 Intent intent1 = new Intent(getBaseContext(), ResultActivity.class);
-
                 intent1.putExtra(MainActivity.EXTRA_MESSAGE, message);
                 intent1.putExtra(MainActivity.EXTRA_MESSAGE2,  generateMultipleBets(surpresinha, message, iCount));
+                intent1.putExtra("XPTO",  iCount);
 
                 startActivity(intent1);
 
@@ -144,9 +145,11 @@ public class ConfiguradorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @NonNull
     private String generateMultipleBets(Surpresinha pSurpresinha, String pMessage, int iQtd) {
 
         String retorno = "";
+        String sQuebralinha = "\n____________________\n";
         int iControle;
 
         for(int i = 0; i < iQtd; i++) {
@@ -155,41 +158,28 @@ public class ConfiguradorActivity extends AppCompatActivity {
 
             switch (pMessage) {
                 case "MEGA-SENA": {
-
-                    retorno = retorno + "\n\nJogo " + iControle+ "\n---------------\n\n" + pSurpresinha.generateMegasenaGame();
-
+                    retorno = retorno + "\nJogo " + iControle+ "\n\n"+ pSurpresinha.generateMegasenaGame() +sQuebralinha;
                     break;
                 }
                 case "QUINA": {
-                    retorno = retorno + "\n\nJogo " + iControle + "\n---------------\n\n" +pSurpresinha.generateQuinaGame();
-
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" +pSurpresinha.generateQuinaGame() + sQuebralinha ;
                     break;
                 }
                 case "LOTOFÁCIL": {
-
-                    retorno = retorno + "\n\nJogo " + iControle + "\n---------------\n\n" + pSurpresinha.generateLotofacilGame();
-
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotofacilGame() + sQuebralinha ;
                     break;
                 }
                 case "LOTOMANIA": {
-
-                    retorno = retorno + "\n\nJogo " + iControle + "\n---------------\n\n" + pSurpresinha.generateLotomaniaGame();
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotomaniaGame() + sQuebralinha ;
                     break;
                 }
                 case "DUPLA-SENA": {
-
-                    retorno = retorno + "\n\nJogo " + iControle + "\n---------------\n\n" + pSurpresinha.generateDuplaSenaGame();
-
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateDuplaSenaGame() + sQuebralinha ;
                     break;
                 }
             }
         }
 
-
-
         return  retorno + "\n\n\n\n\n";
-
     }
-
-
 }

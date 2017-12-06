@@ -12,6 +12,7 @@ public class Surpresinha {
     private String gameName;
     private String gameDescription;
     private int iThumbnail;
+    private String url;
 
 
     public String getGameName() {
@@ -37,6 +38,71 @@ public class Surpresinha {
     public void setiThumbnail(int iThumbnail) {
         this.iThumbnail = iThumbnail;
     }
+    
+    public String getUrl(String pGame) { 
+        
+        switch (pGame) {
+
+            case "MEGA-SENA": {
+                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/megasena";
+                break;
+            }
+            case "QUINA": {
+                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/quina";
+                break;
+            }
+            case "LOTOFÁCIL": {
+                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/lotofacil";
+                break;
+            }
+            case "LOTOMANIA": {
+                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/lotomania";
+                break;
+            }
+            case "DUPLA-SENA": {
+                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/duplasena";
+                break;
+            }
+        }
+        return url;
+    }
+
+    public int[] getBackgroundColors(String pGame) {
+        
+        int[] values = new int[]{0,0};
+
+        switch (pGame) {
+
+            case "MEGA-SENA": {
+                values[0] = R.color.colorMegasena;
+                values[1] = R.drawable.degrade_radial_megasena;
+                break;
+            }
+            case "QUINA": {
+                values[0] = R.color.colorQuina;
+                values[1] = R.drawable.degrade_radial_quina;
+                break;
+            }
+            case "LOTOFÁCIL": {
+                values[0] = R.color.colorLotofacil;
+                values[1] = R.drawable.degrade_radial_lotofacil;
+                break;
+            }
+            case "LOTOMANIA": {
+                values[0] = R.color.colorLotomania;
+                values[1] = R.drawable.degrade_radial_lotomania;
+                break;
+            }
+            case "DUPLA-SENA": {
+                values[0] = R.color.colorDuplasena;
+                values[1] = R.drawable.degrade_radial_duplasena;
+                break;
+            }
+        }
+
+        return values;
+    }
+
 
 
     public String generateMegasenaGame() {

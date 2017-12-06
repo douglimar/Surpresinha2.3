@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = new String ("br.com.douglimar.surpresinha.MESSAGE");
     public static final String EXTRA_MESSAGE2 = new String ("br.com.douglimar.surpresinha.MESSAGE2");
+    public static final String EXTRA_MESSAGE3 = new String ("br.com.douglimar.surpresinha.MESSAGE3");
 
 
     private FirebaseAnalytics mFirebaseAnalytics;

@@ -1,10 +1,17 @@
 package br.com.douglimar.surpresinha;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +32,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
         Button btnJogoUnico = findViewById(R.id.btnSingleGame);
         Button btnJogosMultiplos = findViewById(R.id.btnMultipleGames);
+        Button btnLastResults = findViewById(R.id.btnLastResults);
 
         final Surpresinha surpresinha = new Surpresinha();
 
@@ -67,6 +75,15 @@ public class SelectGameActivity extends AppCompatActivity {
                 intent1.putExtra(MainActivity.EXTRA_MESSAGE, message);
 
                 startActivity(intent1);
+
+            }
+        });
+
+        btnLastResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                carregaWebView(surpresinha.getUrl(message), message);
 
             }
         });
@@ -206,9 +223,114 @@ public class SelectGameActivity extends AppCompatActivity {
 
         }
 
-        return  retorno;
+        return retorno;
 
     }
+
+    public void carregaWebView(String url, String pMessage) {
+
+        setContentView(R.layout.activity_webview);
+
+        WebView myWebView;
+
+        WebViewClient myWebViewClient = new WebViewClient() {
+
+            ProgressDialog progressDialog = new ProgressDialog(SelectGameActivity.this);
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+
+                super.onPageStarted(view, url, favicon);
+                progressDialog.setMessage("Aguarde... Carregando Resultados");
+                progressDialog.setCancelable(false);
+
+                progressDialog.setOnKeyListener(new DialogInterface.OnKeyListener(){
+
+                    //@Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                        if(keyCode == KeyEvent.KEYCODE_SEARCH)
+                            return true;
+                        else
+                            return false;
+                    }
+                });
+
+                progressDialog.show();
+            }
+
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                progressDialog.setMessage("Aguarde... Carregando Resultados");
+                progressDialog.setCancelable(false);
+
+                progressDialog.setOnKeyListener(new DialogInterface.OnKeyListener(){
+                    //@Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                        if(keyCode == KeyEvent.KEYCODE_SEARCH)
+                            return true;
+                        else
+                            return false;
+                    }});
+
+                progressDialog.show();
+                view.loadUrl(url);
+                return true;
+            }
+
+            public void onPageFinished(WebView view, String url) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+
+			/* @Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+				if (url.contains("www1.caixa.gov.br") == true )
+					return false;
+
+				return true;
+
+			} */
+        };
+
+        // Get Web view
+        myWebView = (WebView) findViewById( R.id.webView1 ); //This is the id you gave
+        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setSupportZoom(true);       //Zoom Control on web (You don't need this if ROM supports Multi-Touch
+        myWebView.getSettings().setBuiltInZoomControls(true); //Enable Multitouch if supported by ROM
+        myWebView.getSettings().setLoadsImagesAutomatically(true); // Dont loud the images
+        myWebView.getSettings().setLoadWithOverviewMode(true);
+        myWebView.getSettings().setUseWideViewPort(false);
+
+
+        if ( pMessage.equals("LOTOMANIA") || pMessage.equals("LOTOFACIL") )
+            myWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+        else
+            myWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+
+        myWebView.setWebViewClient(myWebViewClient);
+
+        // Load URL
+        myWebView.loadUrl(url);
+
+        Button btnVoltar = (Button) findViewById(R.id.btnVoltar1);
+
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
+        LinearLayout llWeb = (LinearLayout) findViewById(R.id.llWebview);
+
+    }
+
 
 
 }

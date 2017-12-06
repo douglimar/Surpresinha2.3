@@ -25,6 +25,7 @@ import android.widget.Toast;
 public class ResultActivity extends AppCompatActivity {
 
     private String url;
+    TextView tvResult;
 
 
     @Override
@@ -35,71 +36,56 @@ public class ResultActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         AppBarLayout appBarLayout = findViewById(R.id.app_bar);
-        TextView tvResult = findViewById(R.id.tvResult);
+        tvResult = findViewById(R.id.tvResult);
         CoordinatorLayout linearResult = findViewById(R.id.linearResult);
 
         Intent intent = getIntent();
+
+        String all = intent.getExtras().toString();
+
+
         final String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         final String numerosGerados = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
+        int iQtdeDeJogos = 1;
+        iQtdeDeJogos = intent.getIntExtra("XPTO", 0);
 
         this.setTitle(message);
 
-        switch (message) {
+        final Surpresinha surpresinha = new Surpresinha();
 
-            case "MEGA-SENA": {
+        linearResult.setBackgroundResource(surpresinha.getBackgroundColors(message)[0]);
+        appBarLayout.setBackgroundResource(surpresinha.getBackgroundColors(message)[1]);
 
-                linearResult.setBackgroundResource(R.color.colorMegasena);
-                appBarLayout.setBackgroundResource(R.drawable.degrade_radial_megasena);
-                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/megasena";
-
-                break;
-            }
-            case "QUINA": {
-
-                linearResult.setBackgroundResource(R.color.colorQuina);
-                appBarLayout.setBackgroundResource(R.drawable.degrade_radial_quina);
-                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/quina";
-
-                break;
-            }
-            case "LOTOFÁCIL": {
-
-                linearResult.setBackgroundResource(R.color.colorLotofacil);
-                appBarLayout.setBackgroundResource(R.drawable.degrade_radial_lotofacil);
-                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/lotofacil";
-
-                break;
-            }
-            case "LOTOMANIA": {
-
-                linearResult.setBackgroundResource(R.color.colorLotomania);
-                appBarLayout.setBackgroundResource(R.drawable.degrade_radial_lotomania);
-                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/lotomania";
-
-                break;
-            }
-            case "DUPLA-SENA": {
-
-                linearResult.setBackgroundResource(R.color.colorDuplasena);
-                appBarLayout.setBackgroundResource(R.drawable.degrade_radial_duplasena);
-                url = "http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/duplasena";
-
-                break;
-            }
-        }
+        url = surpresinha.getUrl(message);
 
         tvResult.setText(numerosGerados);
 
         Toast.makeText(getBaseContext(), "Clique no botão azul para visualizar os últimos resultados.", Toast.LENGTH_LONG).show();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        final int finalIQtdeDeJogos = iQtdeDeJogos;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Gerando novos números da sorte.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                carregaWebView(url, message);
+                tvResult.setText(generateMultiBets(surpresinha, message, finalIQtdeDeJogos));
+
+            }
+        });
+
+
+        FloatingActionButton fabShare = findViewById(R.id.fab2);
+
+        fabShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Compartilhando", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                shareContent(tvResult.getText().toString());
+
             }
         });
         // add back arrow to toolbar
@@ -107,9 +93,7 @@ public class ResultActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -226,5 +210,53 @@ public class ResultActivity extends AppCompatActivity {
         LinearLayout llWeb = (LinearLayout) findViewById(R.id.llWebview);
 
     }
+
+    private String generateMultiBets(Surpresinha pSurpresinha, String pMessage, int iQtd) {
+
+        String retorno = "";
+        String sQuebralinha = "\n____________________\n";
+        int iControle;
+
+        for(int i = 0; i < iQtd; i++) {
+
+            iControle = i+1;
+
+            switch (pMessage) {
+                case "MEGA-SENA": {
+                    retorno = retorno + "\nJogo " + iControle+ "\n\n"+ pSurpresinha.generateMegasenaGame() +sQuebralinha;
+                    break;
+                }
+                case "QUINA": {
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" +pSurpresinha.generateQuinaGame() + sQuebralinha ;
+                    break;
+                }
+                case "LOTOFÁCIL": {
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotofacilGame() + sQuebralinha ;
+                    break;
+                }
+                case "LOTOMANIA": {
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotomaniaGame() + sQuebralinha ;
+                    break;
+                }
+                case "DUPLA-SENA": {
+                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateDuplaSenaGame() + sQuebralinha ;
+                    break;
+                }
+            }
+        }
+
+        return  retorno + "\n\n\n\n\n";
+    }
+
+    public void shareContent(String pMessage) {
+
+
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Surpresinha");
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, pMessage + "\n" + "https://play.google.com/store/apps/details?id=br.com.douglimar.surpresinha_megasena");
+        startActivity(Intent.createChooser(sharingIntent, "Compartilhar com..."));
+    }
+
 
 }
