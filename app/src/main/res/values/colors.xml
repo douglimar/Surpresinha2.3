@@ -6,14 +6,19 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorGray">#b4b2b3</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorMegasenaDark">#065c20</color>
     <color name="colorMegasena">#2b8b48</color>
     <color name="colorMegasenaLight">#6bd18a</color>
+    <color name="colorQuinaDark">#04366b</color>
     <color name="colorQuina">#2463a3</color>
     <color name="colorQuinaLight">#85b1de</color>
+    <color name="colorLotofacilDark">#4a0659</color>
     <color name="colorLotofacil">#8c23a4</color>
     <color name="colorLotofacilLight">#b969e1</color>
+    <color name="colorLotomaniaDark">#a64404</color>
     <color name="colorLotomania">#e46918</color>
     <color name="colorLotomaniaLight">#e2b25e</color>
+    <color name="colorDuplasenaDark">#86081f</color>
     <color name="colorDuplasena">#d41a3c</color>
     <color name="colorDuplasenaLight">#bf7784</color>
 </resources>

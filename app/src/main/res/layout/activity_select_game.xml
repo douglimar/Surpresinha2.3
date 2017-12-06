@@ -26,7 +26,7 @@
     <Button
         android:id="@+id/btnSingleGame"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="@dimen/button_height"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="12dp"
@@ -41,7 +41,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:layout_height="75dp"
+        android:layout_height="@dimen/button_height"
         android:background="@color/colorWhite"
         android:text="@string/gerarMultiplosJogos" />
 

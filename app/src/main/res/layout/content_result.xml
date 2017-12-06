@@ -19,9 +19,5 @@
         android:textColor="@color/colorWhite"
         android:layout_margin="@dimen/text_margin"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Últimos resultados"/>
 
 </android.support.v4.widget.NestedScrollView>

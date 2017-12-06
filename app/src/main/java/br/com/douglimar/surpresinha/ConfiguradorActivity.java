@@ -187,7 +187,7 @@ public class ConfiguradorActivity extends AppCompatActivity {
 
 
 
-        return  retorno + "\n\n\n";
+        return  retorno + "\n\n\n\n\n";
 
     }
 

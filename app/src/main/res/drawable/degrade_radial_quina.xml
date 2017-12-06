@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <gradient
-        android:startColor="@color/colorMegasenaDark"
-        android:endColor="@color/colorMegasena"
+        android:startColor="@color/colorQuinaDark"
+        android:endColor="@color/colorQuina"
         android:gradientRadius="200"
         android:angle="90"
         android:type="linear"/>

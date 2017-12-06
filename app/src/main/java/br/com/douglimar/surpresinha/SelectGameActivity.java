@@ -76,8 +76,8 @@ public class SelectGameActivity extends AppCompatActivity {
 
             case "MEGA-SENA": {
 
-                //linearLayout.setBackgroundResource(R.color.colorMegasena);
-                linearLayout.setBackgroundResource(R.drawable.degrade_radial_megasena);
+                linearLayout.setBackgroundResource(R.color.colorMegasena);
+                //linearLayout.setBackgroundResource(R.drawable.degrade_radial_megasena);
 
                 break;
             }
@@ -140,7 +140,7 @@ public class SelectGameActivity extends AppCompatActivity {
                     break;
                 }
                 case "QUINA": {
-                    retorno = pSurpresinha.generateQuinaGame();
+                    retorno = retorno + "\n\n" +pSurpresinha.generateQuinaGame();
 
                     break;
                 }
@@ -166,7 +166,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
 
 
-        return  retorno;
+        return  retorno ;
 
     }
 
