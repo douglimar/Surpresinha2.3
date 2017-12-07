@@ -36,7 +36,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
         final Surpresinha surpresinha = new Surpresinha();
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         final String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
@@ -58,6 +58,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
                 intent2.putExtra(MainActivity.EXTRA_MESSAGE, message);
                 intent2.putExtra(MainActivity.EXTRA_MESSAGE2, openActivity2(surpresinha,message));
+                intent2.putExtra("XPTO", 1);
 
                 startActivity(intent2);
 
@@ -143,50 +144,6 @@ public class SelectGameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private String generateMultipleBets(Surpresinha pSurpresinha, String pMessage, int iQtd) {
-
-        String retorno = "";
-
-        for(int i = 0; i == iQtd; i++) {
-
-            switch (pMessage) {
-                case "MEGA-SENA": {
-
-                    retorno = retorno + "\n\n" + pSurpresinha.generateMegasenaGame();
-
-                    break;
-                }
-                case "QUINA": {
-                    retorno = retorno + "\n\n" +pSurpresinha.generateQuinaGame();
-
-                    break;
-                }
-                case "LOTOFÁCIL": {
-
-                    retorno = retorno + "\n\n" + pSurpresinha.generateLotofacilGame();
-
-                    break;
-                }
-                case "LOTOMANIA": {
-
-                    retorno = retorno + "\n\n" + pSurpresinha.generateLotomaniaGame();
-                    break;
-                }
-                case "DUPLA-SENA": {
-
-                    retorno = retorno + "\n\n" + pSurpresinha.generateDuplaSenaGame();
-
-                    break;
-                }
-            }
-        }
-
-
-
-        return  retorno ;
-
-    }
-
     private String openActivity2(Surpresinha pSurpresinha, String pMessage) {
 
         String retorno = "";
@@ -227,7 +184,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
     }
 
-    public void carregaWebView(String url, String pMessage) {
+    private void carregaWebView(String url, String pMessage) {
 
         setContentView(R.layout.activity_webview);
 
@@ -235,7 +192,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
         WebViewClient myWebViewClient = new WebViewClient() {
 
-            ProgressDialog progressDialog = new ProgressDialog(SelectGameActivity.this);
+            final ProgressDialog progressDialog = new ProgressDialog(SelectGameActivity.this);
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -261,8 +218,8 @@ public class SelectGameActivity extends AppCompatActivity {
 
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-                progressDialog.setMessage("Aguarde... Carregando Resultados");
-                progressDialog.setCancelable(false);
+                progressDialog.setMessage("Aguarde... Carregando Resultados na internet");
+                progressDialog.setCancelable(true);
 
                 progressDialog.setOnKeyListener(new DialogInterface.OnKeyListener(){
                     //@Override
@@ -297,7 +254,7 @@ public class SelectGameActivity extends AppCompatActivity {
         };
 
         // Get Web view
-        myWebView = (WebView) findViewById( R.id.webView1 ); //This is the id you gave
+        myWebView = findViewById( R.id.webView1 ); //This is the id you gave
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setSupportZoom(true);       //Zoom Control on web (You don't need this if ROM supports Multi-Touch
         myWebView.getSettings().setBuiltInZoomControls(true); //Enable Multitouch if supported by ROM
@@ -316,18 +273,12 @@ public class SelectGameActivity extends AppCompatActivity {
         // Load URL
         myWebView.loadUrl(url);
 
-        Button btnVoltar = (Button) findViewById(R.id.btnVoltar1);
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
+        AdView adView = findViewById(R.id.adViewWebview);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-
-
-        LinearLayout llWeb = (LinearLayout) findViewById(R.id.llWebview);
+        //LinearLayout llWeb = (LinearLayout) findViewById(R.id.llWebview);
 
     }
 

@@ -14,23 +14,20 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
 
-
     public static final String EXTRA_MESSAGE = new String ("br.com.douglimar.surpresinha.MESSAGE");
     public static final String EXTRA_MESSAGE2 = new String ("br.com.douglimar.surpresinha.MESSAGE2");
-    public static final String EXTRA_MESSAGE3 = new String ("br.com.douglimar.surpresinha.MESSAGE3");
-
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        AdView adView = findViewById(R.id.adViewMain2);
+        AdView adView = findViewById(R.id.adViewMain);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
@@ -109,25 +106,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, pMessage);
 
         startActivity(intent);
-
-    }
-
-
-
-    private void openActivity2(String pMessage) {
-
-        Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, pMessage);
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, pMessage);
-        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
-        Toast.makeText(this, pMessage, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, SelectGameActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, pMessage);
-
-        startActivity(intent);
-
-
     }
 }

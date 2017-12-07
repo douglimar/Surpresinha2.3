@@ -6,22 +6,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class ConfiguradorActivity extends AppCompatActivity {
 
     private int iCount = 2;
-    TextView tvNumero, tvConfiguratorTitle;
+    private TextView tvNumero, tvConfiguratorTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configurador);
+
+        AdView adView = findViewById(R.id.adViewConfigurador);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         LinearLayout linearConfigurator = findViewById(R.id.linearConfigurador);
 

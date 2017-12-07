@@ -4,10 +4,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Created by douglimar on 02/12/17.
+ * Created by Douglimar Moraes on 02/12/17.
+ *
+ *
  */
 
-public class Surpresinha {
+class Surpresinha {
 
     private String gameName;
     private String gameDescription;
@@ -15,31 +17,7 @@ public class Surpresinha {
     private String url;
 
 
-    public String getGameName() {
-        return gameName;
-    }
-
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
-    }
-
-    public String getGameDescription() {
-        return gameDescription;
-    }
-
-    public void setGameDescription(String gameDescription) {
-        this.gameDescription = gameDescription;
-    }
-
-    public int getiThumbnail() {
-        return iThumbnail;
-    }
-
-    public void setiThumbnail(int iThumbnail) {
-        this.iThumbnail = iThumbnail;
-    }
-    
-    public String getUrl(String pGame) { 
+    public String getUrl(String pGame) {
         
         switch (pGame) {
 
@@ -113,7 +91,7 @@ public class Surpresinha {
 
         int numsMegaSena[] = new int[6];
 
-        int indice = 0;
+        int indice;
         Random random = new Random();
         String Retorno = "";
 
@@ -150,7 +128,7 @@ public class Surpresinha {
 
         int numerosQuina[] = new int[5] ;
 
-        int indice = 0;
+        int indice;
         Random random = new Random();
         String Retorno = "";
 
@@ -161,7 +139,7 @@ public class Surpresinha {
 
             // Consiste o nro. gerado, para garantir que ele é unico
             for (int k = 0; k <= 80; k++) {
-                if (consisteJogo(numerosQuina, indice) == true || indice == 0 ) {
+                if (consisteJogo(numerosQuina, indice) || indice == 0 ) {
                     indice = random.nextInt(81);
                 }
             }
@@ -194,7 +172,7 @@ public class Surpresinha {
         int numsLotofacil[] = new int[15];
 
         int j = 0;
-        int indice = 0;
+        int indice;
         Random random = new Random();
         String Retorno = "";
 
@@ -236,7 +214,7 @@ public class Surpresinha {
         int numsLotomania[] = new int[50];
 
         int j = 0 ;
-        int indice = 0;
+        int indice;
         String Retorno = "";
         Random random = new Random();
 
@@ -245,7 +223,7 @@ public class Surpresinha {
 
             // Consiste o nro. gerado, para garantir que ele é unico
             for (int k = 0; k <= 100; k++) {
-                if (consisteJogo(numsLotomania, indice) == true || indice == 0 ) {
+                if (consisteJogo(numsLotomania, indice) || indice == 0 ) {
                     indice = random.nextInt(101);
                 }
             }
@@ -285,7 +263,7 @@ public class Surpresinha {
 
         int numsDuplaSena[] = new int[6];
 
-        int indice = 0;
+        int indice;
         Random random = new Random();
         String Retorno = "";
 
@@ -315,12 +293,12 @@ public class Surpresinha {
     }
 
 
-    public boolean consisteJogo(int pArray[], int PNumero) {
+    private boolean consisteJogo(int pArray[], int PNumero) {
 
         boolean Retorno = false;
 
-        for (int i = 0; i < pArray.length; i++) {
-            if (pArray[i] == PNumero ) {
+        for (int aPArray : pArray) {
+            if (aPArray == PNumero) {
                 Retorno = true;
                 break;
             }
