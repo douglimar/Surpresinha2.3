@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -14,8 +13,8 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = new String ("br.com.douglimar.surpresinha.MESSAGE");
-    public static final String EXTRA_MESSAGE2 = new String ("br.com.douglimar.surpresinha.MESSAGE2");
+    public static final String EXTRA_MESSAGE  = "br.com.douglimar.surpresinha.MESSAGE";
+    public static final String EXTRA_MESSAGE2 = "br.com.douglimar.surpresinha.MESSAGE2";
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -40,21 +39,22 @@ public class MainActivity extends AppCompatActivity {
         btnMega.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity("MEGA-SENA");
+                //openActivity("MEGA-SENA");
+                openActivity(getString(R.string.megasena));
             }
         });
 
         btnLotofacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity("LOTOFÁCIL");
+                openActivity(getString(R.string.lotofacil));
             }
         });
 
         btnLotomania.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity("LOTOMANIA");
+                openActivity(getString(R.string.lotomania));
 
             }
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         btnQuina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity("QUINA");
+                openActivity(getString(R.string.quina));
             }
         });
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         btnDuplaSena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity("DUPLA-SENA");
+                openActivity(getString(R.string.duplasena));
             }
         });
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-        Toast.makeText(this, pMessage, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, pMessage, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, SelectGameActivity.class);
         intent.putExtra(EXTRA_MESSAGE, pMessage);
 

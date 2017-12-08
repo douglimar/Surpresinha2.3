@@ -13,15 +13,16 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class SelectGameActivity extends AppCompatActivity {
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +36,10 @@ public class SelectGameActivity extends AppCompatActivity {
         Button btnLastResults = findViewById(R.id.btnLastResults);
 
         final Surpresinha surpresinha = new Surpresinha();
-
         final Intent intent = getIntent();
-
         final String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         TextView tvTitulo = findViewById(R.id.tvSelectGameTitle2);
-
         tvTitulo.setText(message);
 
         // Create a AdView
@@ -50,9 +48,19 @@ public class SelectGameActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         btnJogoUnico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "SelectGame");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "JogoUnicoClick");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
                 Intent intent2 = new Intent(getBaseContext(), ResultActivity.class);
 
@@ -61,9 +69,6 @@ public class SelectGameActivity extends AppCompatActivity {
                 intent2.putExtra("XPTO", 1);
 
                 startActivity(intent2);
-
-                //openActivity2(surpresinha, message);
-
             }
         });
 
@@ -71,12 +76,16 @@ public class SelectGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent1 = new Intent(getApplicationContext(), ConfiguradorActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "SelectGame");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "JogoMultiplo");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
+                Intent intent1 = new Intent(getApplicationContext(), ConfiguradorActivity.class);
                 intent1.putExtra(MainActivity.EXTRA_MESSAGE, message);
 
                 startActivity(intent1);
-
             }
         });
 
@@ -93,54 +102,40 @@ public class SelectGameActivity extends AppCompatActivity {
         switch (message) {
 
             case "MEGA-SENA": {
-
                 linearLayout.setBackgroundResource(R.color.colorMegasena);
-                //linearLayout.setBackgroundResource(R.drawable.degrade_radial_megasena);
-
                 break;
             }
             case "QUINA": {
-
                 linearLayout.setBackgroundResource(R.color.colorQuina);
-
                 break;
             }
             case "LOTOFÁCIL": {
-
                 linearLayout.setBackgroundResource(R.color.colorLotofacil);
-
                 break;
             }
             case "LOTOMANIA": {
-
                 linearLayout.setBackgroundResource(R.color.colorLotomania);
-
-               break;
+                break;
             }
             case "DUPLA-SENA": {
-
                 linearLayout.setBackgroundResource(R.color.colorDuplasena);
-
                 break;
             }
         }
+
         // add back arrow to toolbar
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
-
             finish(); // close this activity and return to preview activity (if there is any)
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -150,45 +145,45 @@ public class SelectGameActivity extends AppCompatActivity {
 
         switch (pMessage) {
             case "MEGA-SENA": {
-
                 retorno = pSurpresinha.generateMegasenaGame();
-
                 break;
             }
             case "QUINA": {
                 retorno = pSurpresinha.generateQuinaGame();
-
                 break;
             }
             case "LOTOFÁCIL": {
-
                 retorno = pSurpresinha.generateLotofacilGame();
-
                 break;
             }
             case "LOTOMANIA": {
-
                 retorno = pSurpresinha.generateLotomaniaGame();
                 break;
             }
             case "DUPLA-SENA": {
-
                 retorno = pSurpresinha.generateDuplaSenaGame();
-
                 break;
             }
-
         }
-
         return retorno;
-
     }
 
     private void carregaWebView(String url, String pMessage) {
 
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "SelectGame");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "CarregaWebView");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+
         setContentView(R.layout.activity_webview);
 
         WebView myWebView;
+
+        AdView adViewWeb = findViewById(R.id.adViewWebview);
+        AdRequest adRequestWeb = new AdRequest.Builder().build();
+        adViewWeb.loadAd(adRequestWeb);
 
         WebViewClient myWebViewClient = new WebViewClient() {
 
@@ -205,11 +200,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
                     //@Override
                     public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-
-                        if(keyCode == KeyEvent.KEYCODE_SEARCH)
-                            return true;
-                        else
-                            return false;
+                        return keyCode == KeyEvent.KEYCODE_SEARCH;
                     }
                 });
 
@@ -225,10 +216,7 @@ public class SelectGameActivity extends AppCompatActivity {
                     //@Override
                     public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 
-                        if(keyCode == KeyEvent.KEYCODE_SEARCH)
-                            return true;
-                        else
-                            return false;
+                        return keyCode == KeyEvent.KEYCODE_SEARCH;
                     }});
 
                 progressDialog.show();
@@ -274,11 +262,7 @@ public class SelectGameActivity extends AppCompatActivity {
         myWebView.loadUrl(url);
 
 
-        AdView adView = findViewById(R.id.adViewWebview);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
-        //LinearLayout llWeb = (LinearLayout) findViewById(R.id.llWebview);
+        LinearLayout llWeb = findViewById(R.id.llWebview);
 
     }
 

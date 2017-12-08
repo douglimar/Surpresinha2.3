@@ -11,11 +11,7 @@ import java.util.Random;
 
 class Surpresinha {
 
-    private String gameName;
-    private String gameDescription;
-    private int iThumbnail;
     private String url;
-
 
     public String getUrl(String pGame) {
         
@@ -93,7 +89,7 @@ class Surpresinha {
 
         int indice;
         Random random = new Random();
-        String Retorno = "";
+        StringBuilder Retorno = new StringBuilder();
 
         for (int i = 0; i < 6; i++) {
             indice = random.nextInt(61);
@@ -111,12 +107,12 @@ class Surpresinha {
         for (int i = 0; i < 6; i++) {
 
             if (numsMegaSena[i] < 10)
-                Retorno = Retorno + " 0" + numsMegaSena[i];
+                Retorno.append(" 0").append(numsMegaSena[i]);
             else
-                Retorno = Retorno + " " + numsMegaSena[i];
+                Retorno.append(" ").append(numsMegaSena[i]);
         }
 
-        return Retorno;
+        return Retorno.toString();
 
     }
 
@@ -130,7 +126,7 @@ class Surpresinha {
 
         int indice;
         Random random = new Random();
-        String Retorno = "";
+        StringBuilder Retorno = new StringBuilder();
 
         for (int i = 0 ; i < 5; i++) {
 
@@ -154,12 +150,12 @@ class Surpresinha {
         for (int i = 0; i < 5; i++) {
 
             if (numerosQuina[i] < 10 )
-                Retorno = Retorno + " 0" + numerosQuina[i];
+                Retorno.append(" 0").append(numerosQuina[i]);
             else
-                Retorno = Retorno + " " + numerosQuina[i];
+                Retorno.append(" ").append(numerosQuina[i]);
         }
 
-        return Retorno;
+        return Retorno.toString();
 
     }
 
@@ -174,7 +170,7 @@ class Surpresinha {
         int j = 0;
         int indice;
         Random random = new Random();
-        String Retorno = "";
+        StringBuilder Retorno = new StringBuilder();
 
         for (int i = 0 ; i < 15; i++) {
             indice = random.nextInt(26);
@@ -194,18 +190,18 @@ class Surpresinha {
             j++;
 
             if (numsLotofacil[i] < 10)
-                Retorno = Retorno + " 0" + numsLotofacil[i];
+                Retorno.append(" 0").append(numsLotofacil[i]);
             else
-                Retorno = Retorno + " " + numsLotofacil[i];
+                Retorno.append(" ").append(numsLotofacil[i]);
 
             if (j == 5 )  {
-                Retorno = Retorno + '\n';
+                Retorno.append('\n');
                 j = 0 ;
             }
 
         }
 
-        return Retorno;
+        return Retorno.toString();
 
     }
 
@@ -215,7 +211,7 @@ class Surpresinha {
 
         int j = 0 ;
         int indice;
-        String Retorno = "";
+        StringBuilder Retorno = new StringBuilder();
         Random random = new Random();
 
         for (int i = 0 ; i < 50; i++) {
@@ -238,21 +234,21 @@ class Surpresinha {
             j++;
 
             if (numsLotomania[i]==100)
-                Retorno = Retorno + " 00";
+                Retorno.append(" 00");
             else
                 if (numsLotomania[i] < 10)
-                    Retorno = Retorno + " 0" + numsLotomania[i];
+                    Retorno.append(" 0").append(numsLotomania[i]);
                 else
-                    Retorno = Retorno + " " + numsLotomania[i];
+                    Retorno.append(" ").append(numsLotomania[i]);
 
             if (j == 8 )  {
-                Retorno = Retorno + '\n';
+                Retorno.append('\n');
                 j = 0 ;
             }
 
         }
 
-        return Retorno;
+        return Retorno.toString();
     }
 
     public String generateDuplaSenaGame() {
@@ -265,7 +261,7 @@ class Surpresinha {
 
         int indice;
         Random random = new Random();
-        String Retorno = "";
+        StringBuilder Retorno = new StringBuilder();
 
         for (int i = 0; i < 6; i++) {
             indice = random.nextInt(51);
@@ -283,12 +279,12 @@ class Surpresinha {
         for (int i = 0; i < 6; i++) {
 
             if (numsDuplaSena[i] < 10)
-                Retorno = Retorno + " 0" + numsDuplaSena[i];
+                Retorno.append(" 0").append(numsDuplaSena[i]);
             else
-                Retorno = Retorno + " " + numsDuplaSena[i];
+                Retorno.append(" ").append(numsDuplaSena[i]);
         }
 
-        return Retorno;
+        return Retorno.toString();
 
     }
 

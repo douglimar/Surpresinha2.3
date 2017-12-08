@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Surpresinha</string>
     <string name="banner_ad_unit_id">ca-app-pub-1098336821710456/1330852689</string>
+    <string name="banner_ad_unit_idFINAL" translatable="false">ca-app-pub-1098336821710456/1330852689</string>
     <string name="banner_ad_unit_TESTE" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="megasena">MEGA SENA</string>
+    <string name="megasena">MEGA-SENA</string>
     <string name="quina">QUINA</string>
     <string name="lotofacil">LOTOFÁCIL</string>
     <string name="lotomania">LOTOMANIA</string>
-    <string name="duplasena">DUPLA SENA</string>
+    <string name="duplasena">DUPLA-SENA</string>
     <string name="gerarMultiplosJogos">GERAR MÚLTIPLOS JOGOS</string>
     <string name="gerarJogoUnico">GERAR JOGO ÚNICO</string>
     <string name="title_activity_result">ResultActivity</string>
@@ -17,4 +18,10 @@
     <string name="plus">+</string>
     <string name="gerar_numeros">GERAR NÚMEROS</string>
     <string name="numeros_da_sorte">Estes são os seus números da sorte:\n %1$s </string>
+    <string name="minimo_2_jogos">Você tem que gerar pelo menos 2 jogos aqui.</string>
+    <string name="maximo10jogos">Você tem que gerar NO MÁXIMO 10 jogos</string>
+    <string name="tip_generateNewBets">Clique no botão azul para gerar novas apostas sem ter que sair da tela</string>
+    <string name="compartilhando">Compartilhando</string>
+    <string name="surpresinha">Surpresinha</string>
+    <string name="shareWith">Compartilhar com...</string>
 </resources>

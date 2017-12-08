@@ -13,12 +13,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class ConfiguradorActivity extends AppCompatActivity {
 
-    private int iCount = 2;
-    private TextView tvNumero, tvConfiguratorTitle;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
+    private int iCount = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +29,15 @@ public class ConfiguradorActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         LinearLayout linearConfigurator = findViewById(R.id.linearConfigurador);
+
+        TextView tvConfiguratorTitle  =  findViewById(R.id.tvConfiguratorTitle);
 
         tvNumero = findViewById(R.id.tvNumero);
         tvNumero.setText(String.valueOf(iCount));
-        tvConfiguratorTitle = findViewById(R.id.tvConfiguratorTitle);
 
         Intent intent = getIntent();
 
@@ -43,40 +48,26 @@ public class ConfiguradorActivity extends AppCompatActivity {
         switch (message) {
 
             case "MEGA-SENA": {
-
-                //linearLayout.setBackgroundResource(R.color.colorMegasena);
-
                 linearConfigurator.setBackgroundResource(R.drawable.degrade_radial_megasena);
-
                 break;
             }
             case "QUINA": {
-
                 linearConfigurator.setBackgroundResource(R.color.colorQuina);
-
                 break;
             }
             case "LOTOFÁCIL": {
-
                 linearConfigurator.setBackgroundResource(R.color.colorLotofacil);
-
                 break;
             }
             case "LOTOMANIA": {
-
                 linearConfigurator.setBackgroundResource(R.color.colorLotomania);
-
                 break;
             }
             case "DUPLA-SENA": {
-
                 linearConfigurator.setBackgroundResource(R.color.colorDuplasena);
-
                 break;
             }
         }
-
-
 
         Button btnMinus = findViewById(R.id.btnMinus);
 
@@ -84,10 +75,16 @@ public class ConfiguradorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "btnMinus");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
                 iCount--;
 
                 if (iCount < 2) {
-                    Toast.makeText(getApplicationContext(), "Você tem que gerar pelo menos 2 jogos aqui.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.minimo_2_jogos, Toast.LENGTH_SHORT).show();
                     iCount = 2;
                 }
                 tvNumero.setText(String.valueOf(iCount));
@@ -101,11 +98,17 @@ public class ConfiguradorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "2");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "btnPlus");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
                 iCount++;
 
                 if (iCount >10) {
                     iCount = 10;
-                    Toast.makeText(getApplicationContext(), "Você tem que gerar NO MÁXIMO 10 jogos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.maximo10jogos, Toast.LENGTH_SHORT).show();
                 }
                 tvNumero.setText(String.valueOf(iCount));
             }
@@ -117,6 +120,13 @@ public class ConfiguradorActivity extends AppCompatActivity {
         btnMultiBets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "3");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "btnMultiBets");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
 
                 Surpresinha surpresinha = new Surpresinha();
 
@@ -138,6 +148,8 @@ public class ConfiguradorActivity extends AppCompatActivity {
 
     }
 
+    private TextView tvNumero;
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -153,7 +165,7 @@ public class ConfiguradorActivity extends AppCompatActivity {
     @NonNull
     private String generateMultipleBets(Surpresinha pSurpresinha, String pMessage, int iQtd) {
 
-        String retorno = "";
+        StringBuilder retorno = new StringBuilder();
         String sQuebralinha = "\n____________________\n";
         int iControle;
 
@@ -163,23 +175,23 @@ public class ConfiguradorActivity extends AppCompatActivity {
 
             switch (pMessage) {
                 case "MEGA-SENA": {
-                    retorno = retorno + "\nJogo " + iControle+ "\n\n"+ pSurpresinha.generateMegasenaGame() +sQuebralinha;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateMegasenaGame()).append(sQuebralinha);
                     break;
                 }
                 case "QUINA": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" +pSurpresinha.generateQuinaGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateQuinaGame()).append(sQuebralinha);
                     break;
                 }
                 case "LOTOFÁCIL": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotofacilGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateLotofacilGame()).append(sQuebralinha);
                     break;
                 }
                 case "LOTOMANIA": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotomaniaGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateLotomaniaGame()).append(sQuebralinha);
                     break;
                 }
                 case "DUPLA-SENA": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateDuplaSenaGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateDuplaSenaGame()).append(sQuebralinha);
                     break;
                 }
             }

@@ -14,8 +14,11 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class ResultActivity extends AppCompatActivity {
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private TextView tvResult;
 
@@ -25,6 +28,9 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         AdView adView = findViewById(R.id.adViewResult);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -52,7 +58,7 @@ public class ResultActivity extends AppCompatActivity {
 
         //Toast.makeText(getBaseContext(), "Clique no botão azul para gerar novos números sem ter que sair da tela.", Toast.LENGTH_LONG).show();
         
-        Snackbar.make(findViewById(R.id.linearResult), "Clique no botão azul para gerar novos números sem ter que sair da tela", Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(R.id.linearResult), R.string.tip_generateNewBets, Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .show();
 
@@ -63,6 +69,12 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View view) {
               //  Snackbar.make(view, "Gerando novos números da sorte.", Snackbar.LENGTH_LONG)
               //          .setAction("Action", null).show();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Result");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "FabButton");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
                 tvResult.setText(generateMultiBets(surpresinha, message, finalIQtdeDeJogos));
 
@@ -75,7 +87,14 @@ public class ResultActivity extends AppCompatActivity {
         fabShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Compartilhando", Snackbar.LENGTH_LONG)
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Result");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "FabShare");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+                Snackbar.make(view, R.string.compartilhando, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 shareContent(tvResult.getText().toString());
@@ -103,7 +122,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private String generateMultiBets(Surpresinha pSurpresinha, String pMessage, int iQtd) {
 
-        String retorno = "Estes são os seus números da sorte:\n";
+        StringBuilder retorno = new StringBuilder("Estes são os seus números da sorte:\n");
         String sQuebralinha = "\n____________________\n";
         int iControle;
 
@@ -113,23 +132,23 @@ public class ResultActivity extends AppCompatActivity {
 
             switch (pMessage) {
                 case "MEGA-SENA": {
-                    retorno = retorno + "\nJogo " + iControle+ "\n\n"+ pSurpresinha.generateMegasenaGame() +sQuebralinha;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateMegasenaGame()).append(sQuebralinha);
                     break;
                 }
                 case "QUINA": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" +pSurpresinha.generateQuinaGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateQuinaGame()).append(sQuebralinha);
                     break;
                 }
                 case "LOTOFÁCIL": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotofacilGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateLotofacilGame()).append(sQuebralinha);
                     break;
                 }
                 case "LOTOMANIA": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateLotomaniaGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateLotomaniaGame()).append(sQuebralinha);
                     break;
                 }
                 case "DUPLA-SENA": {
-                    retorno = retorno + "\nJogo " + iControle + "\n\n" + pSurpresinha.generateDuplaSenaGame() + sQuebralinha ;
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateDuplaSenaGame()).append(sQuebralinha);
                     break;
                 }
             }
@@ -140,12 +159,17 @@ public class ResultActivity extends AppCompatActivity {
 
     private void shareContent(String pMessage) {
 
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "shareContent");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Share Content");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Surpresinha");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.surpresinha));
         sharingIntent.putExtra(Intent.EXTRA_TEXT, pMessage + "\n" + getResources().getString(R.string.googlePlayURL));
-        startActivity(Intent.createChooser(sharingIntent, "Compartilhar com..."));
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.shareWith)));
     }
 
 

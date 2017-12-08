@@ -79,7 +79,7 @@
             ads:adSize="BANNER"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
-            ads:adUnitId="@string/banner_ad_unit_TESTE"
+            ads:adUnitId="@string/banner_ad_unit_id"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
