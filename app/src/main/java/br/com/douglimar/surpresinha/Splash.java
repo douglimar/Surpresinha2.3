@@ -14,7 +14,7 @@ import android.view.WindowManager;
 public class Splash extends AppCompatActivity implements Runnable {
     /**
      * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
+     * {@link //AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
     private static final boolean AUTO_HIDE = true;
 
