@@ -1,6 +1,7 @@
 package br.com.douglimar.surpresinha;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -76,7 +77,10 @@ public class ResultActivity extends AppCompatActivity {
                 bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
                 mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-                tvResult.setText(generateMultiBets(surpresinha, message, finalIQtdeDeJogos));
+                if (finalIQtdeDeJogos==1)
+                    tvResult.setText(generateBet(surpresinha, message));
+                else
+                    tvResult.setText(generateMultiBets(surpresinha, message, finalIQtdeDeJogos));
 
             }
         });
@@ -120,9 +124,46 @@ public class ResultActivity extends AppCompatActivity {
     }
 
 
+    private String generateBet(Surpresinha pSurpresinha, String pMessage) {
+
+        StringBuilder retorno = new StringBuilder("Estes são os seus números da sorte:\n\n");
+        //StringBuilder retorno = new StringBuilder(Resources.getSystem().getString(R.string.numeros_da_sorte));
+
+        switch (pMessage) {
+            case "MEGA-SENA": {
+                retorno.append(pSurpresinha.generateMegasenaGame());
+                break;
+            }
+            case "QUINA": {
+                retorno.append(pSurpresinha.generateQuinaGame());
+                break;
+            }
+            case "LOTOFÁCIL": {
+                retorno.append(pSurpresinha.generateLotofacilGame());
+                break;
+            }
+            case "LOTOMANIA": {
+                retorno.append(pSurpresinha.generateLotomaniaGame());
+                break;
+            }
+            case "DUPLA-SENA": {
+                retorno.append(pSurpresinha.generateDuplaSenaGame());
+                break;
+            }
+            case "DIA-DE-SORTE": {
+                retorno.append(pSurpresinha.generateDiaDeSorteGame());
+                break;
+            }
+        }
+
+        return  retorno.toString();
+    }
+
     private String generateMultiBets(Surpresinha pSurpresinha, String pMessage, int iQtd) {
 
-        StringBuilder retorno = new StringBuilder("Estes são os seus números da sorte:\n");
+        StringBuilder retorno = new StringBuilder("Estes são os seus números da sorte:\n\n");
+        //StringBuilder retorno = new StringBuilder(Resources.getSystem().getString(R.string.numeros_da_sorte));
+
         String sQuebralinha = "\n____________________\n";
         int iControle;
 
@@ -149,6 +190,10 @@ public class ResultActivity extends AppCompatActivity {
                 }
                 case "DUPLA-SENA": {
                     retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateDuplaSenaGame()).append(sQuebralinha);
+                    break;
+                }
+                case "DIA-DE-SORTE": {
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateDiaDeSorteGame()).append(sQuebralinha);
                     break;
                 }
             }

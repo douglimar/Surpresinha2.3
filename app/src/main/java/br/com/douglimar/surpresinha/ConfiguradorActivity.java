@@ -67,6 +67,10 @@ public class ConfiguradorActivity extends AppCompatActivity {
                 linearConfigurator.setBackgroundResource(R.color.colorDuplasena);
                 break;
             }
+            case "DIA-DE-SORTE": {
+                linearConfigurator.setBackgroundResource(R.color.colorDiaDeSorte);
+                break;
+            }
         }
 
         Button btnMinus = findViewById(R.id.btnMinus);
@@ -192,6 +196,10 @@ public class ConfiguradorActivity extends AppCompatActivity {
                 }
                 case "DUPLA-SENA": {
                     retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateDuplaSenaGame()).append(sQuebralinha);
+                    break;
+                }
+                case "DIA-DE-SORTE": {
+                    retorno.append("\nJogo ").append(iControle).append("\n\n").append(pSurpresinha.generateDiaDeSorteGame()).append(sQuebralinha);
                     break;
                 }
             }

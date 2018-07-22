@@ -41,6 +41,16 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
 
+            <Button
+                android:id="@+id/btnDiaDeSorte"
+                android:textColor="@color/colorWhite"
+                android:text="@string/diadesorte"
+                android:background="@color/colorDiaDeSorteDark"
+                android:layout_width="match_parent"
+                android:layout_margin="2dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
         </LinearLayout>
 
         <LinearLayout

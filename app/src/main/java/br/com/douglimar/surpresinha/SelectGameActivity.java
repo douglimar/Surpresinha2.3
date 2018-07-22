@@ -121,6 +121,11 @@ public class SelectGameActivity extends AppCompatActivity {
                 linearLayout.setBackgroundResource(R.color.colorDuplasena);
                 break;
             }
+            case "DIA-DE-SORTE": {
+                linearLayout.setBackgroundResource(R.color.colorDiaDeSorte);
+                break;
+            }
+
         }
 
         // add back arrow to toolbar
@@ -162,6 +167,10 @@ public class SelectGameActivity extends AppCompatActivity {
             }
             case "DUPLA-SENA": {
                 retorno = pSurpresinha.generateDuplaSenaGame();
+                break;
+            }
+            case "DIA-DE-SORTE": {
+                retorno = pSurpresinha.generateDiaDeSorteGame();
                 break;
             }
         }

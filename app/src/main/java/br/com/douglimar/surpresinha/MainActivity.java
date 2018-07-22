@@ -36,10 +36,12 @@ public class MainActivity extends AppCompatActivity {
         Button btnQuina = findViewById(R.id.btnQuina);
         Button btnDuplaSena = findViewById(R.id.btnDuplaSena);
 
+        //Add New Button Dia de Sorte
+        Button btnDiaDeSorte = findViewById(R.id.btnDiaDeSorte);
+
         btnMega.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //openActivity("MEGA-SENA");
                 openActivity(getString(R.string.megasena));
             }
         });
@@ -67,11 +69,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         btnDuplaSena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openActivity(getString(R.string.duplasena));
+            }
+        });
+
+        btnDiaDeSorte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity(getString(R.string.diadesorte));
             }
         });
 
@@ -87,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
 
-            finish(); // close this activity and return to preview activity (if there is any)
+            // close this activity and return to preview activity (if there is any)
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -101,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-        //Toast.makeText(this, pMessage, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, SelectGameActivity.class);
         intent.putExtra(EXTRA_MESSAGE, pMessage);
 
