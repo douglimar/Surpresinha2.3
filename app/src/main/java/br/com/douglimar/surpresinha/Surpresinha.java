@@ -1,7 +1,5 @@
 package br.com.douglimar.surpresinha;
 
-import android.content.res.Resources;
-
 import java.util.Arrays;
 import java.util.Random;
 
