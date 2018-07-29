@@ -19,11 +19,13 @@
     <string name="gerar_numeros">GERAR NÚMEROS</string>
     <string name="numeros_da_sorte">Estes são os seus números da sorte:\n\n %1$s </string>
     <string name="minimo_2_jogos">Você tem que gerar pelo menos 2 jogos aqui.</string>
-    <string name="maximo10jogos">Você tem que gerar NO MÁXIMO 10 jogos</string>
     <string name="tip_generateNewBets">Clique no botão azul para gerar novas apostas sem ter que sair da tela</string>
     <string name="compartilhando">Compartilhando</string>
     <string name="surpresinha">Surpresinha</string>
     <string name="shareWith">Compartilhar com…</string>
     <string name="diadesorte">DIA-DE-SORTE</string>
     <string name="mes_da_sorte">MÊS DA SORTE:</string>
+    <string name="maximo10jogos">Você pode gerar NO MÁXIMO 15 jogos ao mesmo tempo.</string>
+    <string name="internet_conn">Sem conexão com a Internet. Verifique suas conexões e tente novamente.</string>
+    <string name="btnGooglePlay">CONHEÇA NOSSOS APLICATIVOS</string>
 </resources>

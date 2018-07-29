@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorGray">#716f6f</color>
     <color name="colorMegasenaDark">#065c20</color>
     <color name="colorMegasena">#2b8b48</color>
     <color name="colorQuinaDark">#04366b</color>
