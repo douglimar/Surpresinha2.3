@@ -15,6 +15,16 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="true">
 
+
+        <!--
+             AdMob App ID: ca-app-pub-1098336821710456~4815414005
+             This section is necessary starting Google-Ad-Services17.0.0
+        -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1098336821710456~3199080001" />
+
+
         <!-- This meta-data tag is required to use Google Play Services. -->
         <meta-data
             android:name="com.google.android.gms.version"
