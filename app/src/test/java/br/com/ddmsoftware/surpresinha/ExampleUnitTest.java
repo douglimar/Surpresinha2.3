@@ -1,4 +1,4 @@
-package br.com.douglimar.surpresinha;
+package br.com.ddmsoftware.surpresinha;
 
 import org.junit.Test;
 

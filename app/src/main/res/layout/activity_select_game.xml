@@ -6,7 +6,7 @@
     android:id="@+id/linearSelectGame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.douglimar.surpresinha.SelectGameActivity">
+    tools:context="br.com.douglimar.surpresinha.br.com.ddmsoftware.surpresinha.SelectGameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

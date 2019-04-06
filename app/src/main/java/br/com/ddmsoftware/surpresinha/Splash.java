@@ -1,4 +1,4 @@
-package br.com.douglimar.surpresinha;
+package br.com.ddmsoftware.surpresinha;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

@@ -1,4 +1,4 @@
-package br.com.douglimar.surpresinha;
+package br.com.ddmsoftware.surpresinha;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,8 +18,8 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE  = "br.com.douglimar.surpresinha.MESSAGE";
-    public static final String EXTRA_MESSAGE2 = "br.com.douglimar.surpresinha.MESSAGE2";
+    public static final String EXTRA_MESSAGE  = "br.com.ddmsoftware.surpresinha.MESSAGE";
+    public static final String EXTRA_MESSAGE2 = "br.com.ddmsoftware.surpresinha.MESSAGE2";
 
     private FirebaseAnalytics mFirebaseAnalytics;
 

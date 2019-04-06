@@ -1,4 +1,4 @@
-package br.com.douglimar.surpresinha;
+package br.com.ddmsoftware.surpresinha;
 
 import java.util.Arrays;
 import java.util.Random;
