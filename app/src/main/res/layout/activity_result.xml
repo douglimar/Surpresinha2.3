@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:id="@+id/linearResult"
     android:keepScreenOn="true"
-    tools:context="br.com.douglimar.surpresinha.br.com.ddmsoftware.surpresinha.ResultActivity">
+    tools:context="br.com.douglimar.surpresinha.ResultActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"

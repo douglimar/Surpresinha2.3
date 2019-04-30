@@ -1,4 +1,4 @@
-package br.com.ddmsoftware.surpresinha;
+package br.com.douglimar.surpresinha;
 
 import android.content.Context;
 import android.content.Intent;

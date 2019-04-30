@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.ddmsoftware.surpresinha">
+    package="br.com.douglimar.surpresinha">
 
     <!-- Include required permissions for Google Mobile Ads to run -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,6 +15,9 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="true"
         android:usesCleartextTraffic="true">
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
 
 
         <!--
@@ -37,13 +40,13 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name=".ResultActivity"
+            android:name="br.com.douglimar.surpresinha.ResultActivity"
             android:label="@string/title_activity_result"
             android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait"/>
-        <activity android:name=".ConfiguradorActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SelectGameActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Splash" android:screenOrientation="portrait">
+        <activity android:name="br.com.douglimar.surpresinha.ConfiguradorActivity" android:screenOrientation="portrait"/>
+        <activity android:name="br.com.douglimar.surpresinha.SelectGameActivity" android:screenOrientation="portrait"/>
+        <activity android:name="br.com.douglimar.surpresinha.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name="br.com.douglimar.surpresinha.Splash" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

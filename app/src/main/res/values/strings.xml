@@ -28,4 +28,5 @@
     <string name="maximo10jogos">Você pode gerar NO MÁXIMO 15 jogos ao mesmo tempo.</string>
     <string name="internet_conn">Sem conexão com a Internet. Verifique suas conexões e tente novamente.</string>
     <string name="btnGooglePlay">CONHEÇA NOSSOS APLICATIVOS</string>
+    <string name="ddm_software">ddm software</string>
 </resources>

@@ -1,4 +1,4 @@
-package br.com.ddmsoftware.surpresinha;
+package br.com.douglimar.surpresinha;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("br.com.douglimar.br.com.ddmsoftware.surpresinha", appContext.getPackageName());
+        assertEquals("br.com.douglimar.surpresinha", appContext.getPackageName());
     }
 }

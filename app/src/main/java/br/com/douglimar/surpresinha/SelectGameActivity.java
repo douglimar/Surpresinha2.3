@@ -1,4 +1,4 @@
-package br.com.ddmsoftware.surpresinha;
+package br.com.douglimar.surpresinha;
 
 import android.app.ProgressDialog;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package br.com.ddmsoftware.surpresinha;
+package br.com.douglimar.surpresinha;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -94,7 +94,7 @@ class Surpresinha {
 	    * O apostador pode escolher 6 numeros entre 60 numeros disponiveis
 	    */
 
-        int numsMegaSena[] = new int[6];
+        int[] numsMegaSena = new int[6];
 
         int indice;
         Random random = new Random();
@@ -131,7 +131,7 @@ class Surpresinha {
 	    * O apostador pode escolher 5 numeros entre 50 numeros disponiveis
 	    */
 
-        int numerosQuina[] = new int[5] ;
+        int[] numerosQuina = new int[5];
 
         int indice;
         Random random = new Random();
@@ -174,7 +174,7 @@ class Surpresinha {
 	    * O apostador pode escolher 15 numeros entre 25 numeros disponiveis
 	    */
 
-        int numsLotofacil[] = new int[15];
+        int[] numsLotofacil = new int[15];
 
         int j = 0;
         int indice;
@@ -216,7 +216,7 @@ class Surpresinha {
 
     public String generateLotomaniaGame() {
 
-        int numsLotomania[] = new int[50];
+        int[] numsLotomania = new int[50];
 
         int j = 0 ;
         int indice;
@@ -266,7 +266,7 @@ class Surpresinha {
 	    * O apostador pode escolher 6 numeros entre 50 numeros disponiveis
 	    */
 
-        int numsDuplaSena[] = new int[6];
+        int[] numsDuplaSena = new int[6];
 
         int indice;
         Random random = new Random();
@@ -307,12 +307,12 @@ class Surpresinha {
 
         Random random = new Random();
 
-        String meses[] = {"JANEIRO","FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO",
-        "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"};
+        String[] meses = {"JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO",
+                "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"};
 
         String mes = meses[random.nextInt(12)];
 
-        int numsDiaDeSorte[] = new int[7];
+        int[] numsDiaDeSorte = new int[7];
 
         int indice;
         StringBuilder Retorno = new StringBuilder();
@@ -342,7 +342,7 @@ class Surpresinha {
 
     }
 
-    private boolean consisteJogo(int pArray[], int PNumero) {
+    private boolean consisteJogo(int[] pArray, int PNumero) {
 
         boolean Retorno = false;
 
